@@ -16,11 +16,23 @@ namespace mystr
             void clear() ;
             void swap ( std::string& str ) ;
 
+            char& operator []( size_t idx ) ;
+            const char& operator []( size_t idx ) const;
+
+            String& operator += ( const String& str ) ;
+            String& operator += ( const std::string& str ) ;
+            String& operator += ( const char* str ) ;
+            String& operator += ( const char c ) ;
+
+            String& operator = ( const String& str ) ;
+            String& operator = ( const std::string& str ) ;
+            String& operator = ( const char* str ) ;
+            String& operator = ( const char c ) ;
 
         private :
             char *str ;
             size_t size_ , capacity_ ;
-    }
+    } ;
 }
 
 #endif  // MYSTRING_H
