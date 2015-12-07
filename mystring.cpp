@@ -44,4 +44,13 @@ namespace mystr
         return *this ;
     }
 
+    String& String::operator = ( String str ) {
+        this->swap(str) ;
+        return *this ;
+    }
+    String& String::operator = ( const char* str ) {
+        *this = String(str) ;
+        return *this ;
+    }
+
 }
