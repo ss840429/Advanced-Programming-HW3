@@ -7,14 +7,18 @@
 namespace mystr
 {
     class String{
-        friend std::ostream& operator <<( std::ostream& os , const String& str ) ;
         friend std::istream& operator >>( std::istream& is , String& str ) ;
 
         public :
-            String():size_(0),capacity_(1){
+            String( const char* c_arr = "" ):size_(0),capacity_(1){
+                if( strcmp( c_arr , "" ) ) {
+                    size_ = strlen( c_arr ) ;
+                    capacity_ =  size_ + 1 ;    // for '\0'
+                }
                 str = new char[capacity_]() ;
-                str[0] = '\0' ;
+                strcpy( str , c_arr ) ;
             }
+            String( const String& mystr ):String(mystr.c_str()){}
             ~String(){
                 delete[] str ;
                 size_ = 0 , capacity_ = 0 ;
@@ -34,12 +38,10 @@ namespace mystr
             const char& operator []( size_t idx ) const;
 
             String& operator += ( const String& str ) ;
-            String& operator += ( const std::string& str ) ;
             String& operator += ( const char* str ) ;
             String& operator += ( const char c ) ;
 
             String& operator = ( const String& str ) ;
-            String& operator = ( const std::string& str ) ;
             String& operator = ( const char* str ) ;
             String& operator = ( const char c ) ;
 
