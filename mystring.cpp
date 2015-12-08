@@ -12,9 +12,19 @@ namespace mystr
             cout << str[i];
         return os ;
     }
-    /*
-        istream
-    */
+    istream& operator >>( istream& is , String& str ){
+        str.clear() ;
+        char ch = '\0' ;
+        int textcount = 0 ;
+        while( ch = getchar() ){
+            if( ( ch == ' ' || ch == '\n' ) && textcount > 0 ) break ;
+            if( ch != ' ' && ch != '\n' ){
+                textcount += 1 ;
+                str += ch ;
+            }
+        }
+        return is ;
+    }
     char& String::operator []( size_t idx ) {
         return const_cast<char&>( static_cast<const String&>(*this)[idx] ) ;
     }
