@@ -74,5 +74,13 @@ namespace mystr
     bool operator > ( const char* lhs , const String& rhs ){
         return strcmp( lhs , rhs.c_str() ) > 0 ;
     }
+    template< class T , class U >
+    bool operator <=( const T& lhs , const U& rhs ){
+        return !(lhs>rhs) ;
+    }
+    template< class T , class U >
+    bool operator >=( const T& lhs , const U& rhs ){
+        return !(lhs<rhs) ;
+    }
 
 }
