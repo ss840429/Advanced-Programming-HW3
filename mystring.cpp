@@ -8,7 +8,7 @@ using namespace mystr ;
 namespace mystr
 {
     ostream& operator <<( ostream& os , const String& str ) {
-        for( int i = 0 ; i < str.size() ; ++i )
+        for( size_t i = 0 ; i < str.size() ; ++i )
             cout << str[i];
         return os ;
     }
@@ -53,8 +53,7 @@ namespace mystr
         return *this ;
     }
 
-
-    /************* Non member function ***************/
+    /***************** Non member function *****************/
 
     bool operator < ( const String& lhs , const String& rhs ){
         return strcmp( lhs.c_str() , rhs.c_str() ) < 0 ;
@@ -91,4 +90,10 @@ namespace mystr
         return !(lhs==rhs) ;
     }
 
+    template< class T , class U >
+    String operator + ( const T& lhs , const U& rhs ){
+        String str( lhs ) ;
+        str += rhs ;
+        return str ;
+    }
 }
