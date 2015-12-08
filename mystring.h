@@ -46,12 +46,11 @@ namespace mystr
             String& operator += ( const char* str ) ;
             String& operator += ( const char c ) ;
 
-            String& operator = ( const String& str ) ;
+            String& operator = ( String str ) ;
             String& operator = ( const char* str ) ;
-            String& operator = ( const char c ) ;
 
         private :
-            char *str ;
+            char *str_ ;
             size_t size_ , capacity_ ;
     } ;
 }
