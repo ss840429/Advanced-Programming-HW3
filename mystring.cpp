@@ -82,5 +82,13 @@ namespace mystr
     bool operator >=( const T& lhs , const U& rhs ){
         return !(lhs<rhs) ;
     }
+    template< class T , class U >
+    bool operator ==( const T& lhs , const U& rhs ){
+        return !(lhs<rhs||lhs>rhs) ;
+    }
+    template< class T , class U >
+    bool operator !=( const T& lhs , const U& rhs ){
+        return !(lhs==rhs) ;
+    }
 
 }
