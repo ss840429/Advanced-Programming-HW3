@@ -14,3 +14,17 @@
 	<iostream>
 	<cstring>
 
+1449665538 source:c:\users\wlog\desktop\github\advanced-programming-hw3\main.cpp
+	<iostream>
+	"mystring.h"
+
+1449675888 c:\users\wlog\desktop\github\advanced-programming-hw3\mystring.h
+	<iostream>
+	<cstring>
+
+1449675896 source:c:\users\wlog\desktop\github\advanced-programming-hw3\mystring.cpp
+	"mystring.h"
+	<iostream>
+	<cstring>
+	<stdio.h>
+

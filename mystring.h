@@ -23,21 +23,10 @@ namespace mystr
                 delete[] str_ ;
                 size_ = 0 , capacity_ = 0 ;
             }
-            size_t size() const {
-                return size_ ;
-            }
-            const char* c_str() const {
-                return str_ ;
-            }
-            void clear() {
-                size_ = 0 ;
-                if( capacity_ > 0 ) str_[0] = '\0' ;
-            }
-            void swap ( String& str ){
-                std::swap( str.str_ , str_ ) ;
-                std::swap( str.capacity_ , capacity_ ) ;
-                std::swap( str.size_ , size_ ) ;
-            }
+            size_t size() const{ return size_ ; }
+            const char* c_str() const{ return str_ ; }
+            void clear() ;
+            void swap ( String& str ) ;
 
             char& operator []( size_t idx ) ;
             const char& operator []( size_t idx ) const;
