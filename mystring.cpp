@@ -1,6 +1,7 @@
 #include "mystring.h"
 #include <iostream>
 #include <cstring>
+#include <stdio.h>
 
 using namespace std ;
 using namespace mystr ;
@@ -9,7 +10,7 @@ namespace mystr
 {
     ostream& operator <<( ostream& os , const String& str ) {
         for( size_t i = 0 ; i < str.size() ; ++i )
-            cout << str[i];
+            os << str[i];
         return os ;
     }
     istream& operator >>( istream& is , String& str ){
@@ -83,27 +84,6 @@ namespace mystr
     bool operator > ( const char* lhs , const String& rhs ){
         return strcmp( lhs , rhs.c_str() ) > 0 ;
     }
-    template< class T , class U >
-    bool operator <=( const T& lhs , const U& rhs ){
-        return !(lhs>rhs) ;
-    }
-    template< class T , class U >
-    bool operator >=( const T& lhs , const U& rhs ){
-        return !(lhs<rhs) ;
-    }
-    template< class T , class U >
-    bool operator ==( const T& lhs , const U& rhs ){
-        return !(lhs<rhs||lhs>rhs) ;
-    }
-    template< class T , class U >
-    bool operator !=( const T& lhs , const U& rhs ){
-        return !(lhs==rhs) ;
-    }
 
-    template< class T , class U >
-    String operator + ( const T& lhs , const U& rhs ){
-        String str( lhs ) ;
-        str += rhs ;
-        return str ;
-    }
 }
+

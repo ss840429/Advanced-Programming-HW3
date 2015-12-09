@@ -53,6 +53,38 @@ namespace mystr
             char *str_ ;
             size_t size_ , capacity_ ;
     } ;
+
+    std::ostream& operator <<( std::ostream& os , const String& str ) ;
+
+    /***************** Non member function *****************/
+    bool operator < ( const String& lhs , const String& rhs ) ;
+    bool operator < ( const String& lhs , const char* rhs ) ;
+    bool operator < ( const char* lhs , const String& rhs ) ;
+    bool operator > ( const String& lhs , const String& rhs ) ;
+    bool operator > ( const String& lhs , const char* rhs ) ;
+    bool operator > ( const char* lhs , const String& rhs ) ;
+    template< class T , class U >
+    bool operator <=( const T& lhs , const U& rhs ){
+        return !(lhs>rhs) ;
+    }
+    template< class T , class U >
+    bool operator >=( const T& lhs , const U& rhs ){
+        return !(lhs<rhs) ;
+    }
+    template< class T , class U >
+    bool operator !=( const T& lhs , const U& rhs ){
+        return (lhs<rhs||lhs>rhs) ;
+    }
+    template< class T , class U >
+    bool operator ==( const T& lhs , const U& rhs ){
+        return !(lhs!=rhs) ;
+    }
+    template< class T , class U >
+    String operator + ( const T& lhs , const U& rhs ){
+        String str( lhs ) ;
+        str += rhs ;
+        return str ;
+    }
 }
 
 #endif  // MYSTRING_H
