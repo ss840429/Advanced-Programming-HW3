@@ -1,16 +1,15 @@
 # depslib dependency file v1.0
-1449646228 source:c:\users\§d\desktop\github\advanced-programming-hw3\main.cpp
+1449726933 source:c:\users\§d\desktop\github\advanced-programming-hw3\main.cpp
 	<iostream>
 	"mystring.h"
-	<cstring>
 
-1449643559 source:c:\users\§d\desktop\github\advanced-programming-hw3\mystring.cpp
+1449733379 source:c:\users\§d\desktop\github\advanced-programming-hw3\mystring.cpp
 	"mystring.h"
 	<iostream>
 	<cstring>
 	<stdio.h>
 
-1449643651 c:\users\§d\desktop\github\advanced-programming-hw3\mystring.h
+1449733369 c:\users\§d\desktop\github\advanced-programming-hw3\mystring.h
 	<iostream>
 	<cstring>
 

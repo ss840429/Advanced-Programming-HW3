@@ -40,35 +40,27 @@ namespace mystr
     const char& String::operator []( size_t idx ) const{
         return str_[idx] ;
     }
-    String& String::operator += ( const char* str ) {
-        int length = strlen( str ) ;
-        if( this->size_ + length >= capacity_ ){
-            char* newstr = new char[size_+length+1]() ;
-            this->size_ += length ;
-            capacity_ = this->size_+1 ;
-            strcpy( newstr , this->str_ ) ;
-            delete[] this->str_ ;
-            this->str_ = newstr ;
-        }
-        strcat( this->str_ , str ) ;
-        return *this ;
-    }
     String& String::operator += ( const String& str ){
-        (*this) += str.c_str() ;
+        if( (*this).size_+str.size_ >= (*this).capacity_ ){
+            char* newstr = new char[(*this).size_+str.size_+1]() ;
+            (*this).size_ = (*this).size_+str.size_ ;
+            (*this).capacity_ = (*this).size_+1 ;
+            strcpy( newstr , (*this).str_ ) ;
+            strcat( newstr , str.str_ ) ;
+            delete[] (*this).str_ ;
+            (*this).str_ = newstr ;
+        }
+        else
+            strcat( (*this).str_ , str.str_ ) ;
         return *this ;
     }
-    String& String::operator += ( const char c ) {
+    String& String::operator += ( char c ) {
         char tmp[] = { c , '\0' } ;
-        (*this) += tmp ;
+        (*this) += String(tmp) ;
         return *this ;
     }
-
     String& String::operator = ( String str ) {
         this->swap(str) ;
-        return *this ;
-    }
-    String& String::operator = ( const char* str ) {
-        *this = String(str) ;
         return *this ;
     }
 
@@ -77,21 +69,25 @@ namespace mystr
     bool operator < ( const String& lhs , const String& rhs ){
         return strcmp( lhs.c_str() , rhs.c_str() ) < 0 ;
     }
-    bool operator < ( const String& lhs , const char* rhs ){
-        return strcmp( lhs.c_str() , rhs ) < 0 ;
-    }
-    bool operator < ( const char* lhs , const String& rhs ){
-        return strcmp( lhs , rhs.c_str() ) < 0 ;
-    }
     bool operator > ( const String& lhs , const String& rhs ){
         return strcmp( lhs.c_str() , rhs.c_str() ) > 0 ;
     }
-    bool operator > ( const String& lhs , const char* rhs ){
-        return strcmp( lhs.c_str() , rhs ) > 0 ;
+    bool operator <=( const String& lhs , const String& rhs ){
+        return !(lhs>rhs) ;
     }
-    bool operator > ( const char* lhs , const String& rhs ){
-        return strcmp( lhs , rhs.c_str() ) > 0 ;
+    bool operator >=( const String& lhs , const String& rhs ){
+        return !(lhs<rhs) ;
     }
-
+    bool operator !=( const String& lhs , const String& rhs ){
+        return (lhs<rhs||lhs>rhs) ;
+    }
+    bool operator ==( const String& lhs , const String& rhs ){
+        return !(lhs!=rhs) ;
+    }
+    String operator + ( const String& lhs , const String& rhs  ){
+        String str( lhs ) ;
+        str += rhs ;
+        return str ;
+    }
 }
 

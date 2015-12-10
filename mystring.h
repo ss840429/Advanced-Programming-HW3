@@ -24,19 +24,18 @@ namespace mystr
                 size_ = 0 , capacity_ = 0 ;
             }
             size_t size() const{ return size_ ; }
+            size_t capacity() const{ return capacity_ ;}
             const char* c_str() const{ return str_ ; }
             void clear() ;
             void swap ( String& str ) ;
+
 
             char& operator []( size_t idx ) ;
             const char& operator []( size_t idx ) const;
 
             String& operator += ( const String& str ) ;
-            String& operator += ( const char* str ) ;
-            String& operator += ( const char c ) ;
-
+            String& operator += ( char c ) ;
             String& operator = ( String str ) ;
-            String& operator = ( const char* str ) ;
 
         private :
             char *str_ ;
@@ -47,33 +46,12 @@ namespace mystr
 
     /***************** Non member function *****************/
     bool operator < ( const String& lhs , const String& rhs ) ;
-    bool operator < ( const String& lhs , const char* rhs ) ;
-    bool operator < ( const char* lhs , const String& rhs ) ;
     bool operator > ( const String& lhs , const String& rhs ) ;
-    bool operator > ( const String& lhs , const char* rhs ) ;
-    bool operator > ( const char* lhs , const String& rhs ) ;
-    template< class T , class U >
-    bool operator <=( const T& lhs , const U& rhs ){
-        return !(lhs>rhs) ;
-    }
-    template< class T , class U >
-    bool operator >=( const T& lhs , const U& rhs ){
-        return !(lhs<rhs) ;
-    }
-    template< class T , class U >
-    bool operator !=( const T& lhs , const U& rhs ){
-        return (lhs<rhs||lhs>rhs) ;
-    }
-    template< class T , class U >
-    bool operator ==( const T& lhs , const U& rhs ){
-        return !(lhs!=rhs) ;
-    }
-    template< class T , class U >
-    String operator + ( const T& lhs , const U& rhs ){
-        String str( lhs ) ;
-        str += rhs ;
-        return str ;
-    }
+    bool operator <=( const String& lhs , const String& rhs ) ;
+    bool operator >=( const String& lhs , const String& rhs ) ;
+    bool operator !=( const String& lhs , const String& rhs ) ;
+    bool operator ==( const String& lhs , const String& rhs ) ;
+    String operator + ( const String& lhs , const String& rhs  ) ;
 }
 
 #endif  // MYSTRING_H

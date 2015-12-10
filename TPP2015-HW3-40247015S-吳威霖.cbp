@@ -31,6 +31,7 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="main.cpp" />
 		<Unit filename="mystring.cpp" />
 		<Unit filename="mystring.h" />
 		<Extensions>
