@@ -12,10 +12,9 @@ namespace mystr
         public :
             String( const char* c_arr = "" ):size_(0),capacity_(1){
                 if( strcmp( c_arr , "" ) ) {
-                    size_ = strlen( c_arr ) ;
-                    capacity_ =  size_ + 1 ;    // for '\0'
+                    capacity_ = size_ = strlen( c_arr ) ;
                 }
-                str_ = new char[capacity_]() ;
+                str_ = new char[capacity_+1]() ;    // for null character
                 strcpy( str_ , c_arr ) ;
             }
             String( const String& str ):String(str.c_str()){}

@@ -28,7 +28,7 @@ namespace mystr
     }
     void String::clear() {
         size_ = 0 ;
-        if( capacity_ > 0 ) str_[0] = '\0' ;
+        strcpy( str_ , "" ) ;
     }
     void String::swap ( String& str ){
         using std::swap ;
@@ -43,17 +43,18 @@ namespace mystr
         return str_[idx] ;
     }
     String& String::operator += ( const String& str ){
-        if( (*this).size_+str.size_ >= (*this).capacity_ ){
-            char* newstr = new char[(*this).size_+str.size_+1]() ;
-            (*this).size_ = (*this).size_+str.size_ ;
-            (*this).capacity_ = (*this).size_+1 ;
-            strcpy( newstr , (*this).str_ ) ;
+        int length = size_ + str.size_ ;
+        if( length > capacity_ ){
+            char* newstr = new char[length+1]() ;
+            capacity_ = size_ = length ;
+            strcpy( newstr , str_ ) ;
             strcat( newstr , str.str_ ) ;
-            delete[] (*this).str_ ;
-            (*this).str_ = newstr ;
+            delete[] str_ ;
+            str_ = newstr ;
         }
-        else
-            strcat( (*this).str_ , str.str_ ) ;
+        else {
+            strcat( str_ , str.str_ ) ;
+        }
         return *this ;
     }
     String& String::operator += ( char c ) {
@@ -69,10 +70,10 @@ namespace mystr
     /***************** Non member function *****************/
 
     bool operator < ( const String& lhs , const String& rhs ){
-        return strcmp( lhs.c_str() , rhs.c_str() ) < 0 ;
+        return ( strcmp( lhs.c_str() , rhs.c_str() ) < 0 ) ;
     }
     bool operator > ( const String& lhs , const String& rhs ){
-        return strcmp( lhs.c_str() , rhs.c_str() ) > 0 ;
+        return ( strcmp( lhs.c_str() , rhs.c_str() ) > 0 ) ;
     }
     bool operator <=( const String& lhs , const String& rhs ){
         return !(lhs>rhs) ;
