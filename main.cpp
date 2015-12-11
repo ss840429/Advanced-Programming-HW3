@@ -50,6 +50,8 @@ int main()
     cout << "s: " << s << "\tsize: " << s.size() << endl ;
     s.clear() ;
     cout << "s: " << s << "\tsize: " << s.size() << endl ;
+    s += 'A' ;
+    cout << "s: " << s << "\tsize: " << s.size() << endl ;
 
     cout << endl << "/* Swap */" << endl ;
     cout << "s: " << s << "\tsize: " << s.size() << endl ;
@@ -65,6 +67,8 @@ int main()
             /* 100110 */
 
     cout << endl << endl << "End" ;
+
+    cin >> s >> t ;
 
     return 0;
 }

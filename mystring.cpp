@@ -20,7 +20,7 @@ namespace mystr
         {
             if( ( ch == ' ' || ch == '\n' ) && textcount > 0 ) break ;
             if( ch != ' ' && ch != '\n' ){
-                textcount += 1 ;
+                ++textcount ;
                 str += ch ;
             }
         }
@@ -54,6 +54,7 @@ namespace mystr
         }
         else {
             strcat( str_ , str.str_ ) ;
+            size_ = length ;
         }
         return *this ;
     }

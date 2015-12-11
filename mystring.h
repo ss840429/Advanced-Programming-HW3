@@ -7,10 +7,9 @@
 namespace mystr
 {
     class String{
-        friend std::istream& operator >>( std::istream& is , String& str ) ;
 
         public :
-            String( const char* c_arr = "" ):size_(0),capacity_(1){
+            String( const char* c_arr = "" ):size_(0),capacity_(0){
                 if( strcmp( c_arr , "" ) ) {
                     capacity_ = size_ = strlen( c_arr ) ;
                 }
@@ -39,16 +38,17 @@ namespace mystr
             size_t size_ , capacity_ ;
     } ;
 
-    std::ostream& operator <<( std::ostream& os , const String& str ) ;
-
     /***************** Non member function *****************/
+
+    std::ostream& operator <<( std::ostream& os , const String& str ) ;
+    std::istream& operator >>( std::istream& is ,       String& str ) ;
     bool operator < ( const String& lhs , const String& rhs ) ;
     bool operator > ( const String& lhs , const String& rhs ) ;
     bool operator <=( const String& lhs , const String& rhs ) ;
     bool operator >=( const String& lhs , const String& rhs ) ;
     bool operator !=( const String& lhs , const String& rhs ) ;
     bool operator ==( const String& lhs , const String& rhs ) ;
-    String operator + ( const String& lhs , const String& rhs  ) ;
+    String operator+( const String& lhs , const String& rhs ) ;
 }
 
 #endif  // MYSTRING_H
