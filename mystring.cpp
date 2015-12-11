@@ -16,7 +16,8 @@ namespace mystr
     istream& operator >>( istream& is , String& str ){
         str.clear() ;
         char ch = '\0' ; int textcount = 0 ;
-        while( ch = getchar() ){
+        while( ch = getchar() )
+        {
             if( ( ch == ' ' || ch == '\n' ) && textcount > 0 ) break ;
             if( ch != ' ' && ch != '\n' ){
                 textcount += 1 ;
@@ -30,9 +31,10 @@ namespace mystr
         if( capacity_ > 0 ) str_[0] = '\0' ;
     }
     void String::swap ( String& str ){
-        std::swap( str.str_ , str_ ) ;
-        std::swap( str.capacity_ , capacity_ ) ;
-        std::swap( str.size_ , size_ ) ;
+        using std::swap ;
+        swap( str.str_ , str_ ) ;
+        swap( str.capacity_ , capacity_ ) ;
+        swap( str.size_ , size_ ) ;
     }
     char& String::operator []( size_t idx ) {
         return const_cast<char&>( static_cast<const String&>(*this)[idx] ) ;
